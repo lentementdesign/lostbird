@@ -45,6 +45,7 @@ https://docs.google.com/spreadsheets/d/1m_6SRfUgCCA5SH8dm_nzWa8D0tTBt7T0K1p8hINp
 * carrierwave
 * mini_magick
 * devise
+* bcrypt
 
 ## 仕様予定技術
 devise、メッセージ機能、Vue.js
