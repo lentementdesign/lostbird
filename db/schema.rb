@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_054830) do
+ActiveRecord::Schema.define(version: 2020_11_23_093136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "room_id"
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_entries_on_room_id"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_054830) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "room_id"
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,8 +34,28 @@ ActiveRecord::Schema.define(version: 2020_11_23_054830) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "rooms", force: :cascade do |t|
+  create_table "pets", force: :cascade do |t|
     t.string "name"
+    t.text "kind"
+    t.string "gender", null: false
+    t.text "feature", null: false
+    t.text "image"
+    t.boolean "lost", default: true, null: false
+    t.date "find_day"
+    t.date "lost_day"
+    t.string "find_prefecture"
+    t.string "prefecture", default: "0", null: false
+    t.string "area"
+    t.string "place"
+    t.boolean "wanted", default: true, null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,4 +77,5 @@ ActiveRecord::Schema.define(version: 2020_11_23_054830) do
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "pets", "users"
 end

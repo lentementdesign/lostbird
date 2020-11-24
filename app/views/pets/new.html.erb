@@ -1,0 +1,34 @@
+<h1>ペット情報登録</h1>
+
+<%= form_with(model: @pet, local: true) do |f| %>
+  <h2>迷子　or 保護</h2>
+  <p><%= f.radio_button :lost, true, checked: true %>
+  <%= f.label "迷子" %>
+  <%= f.radio_button :lost, false %>
+  <%= f.label "保護" %>
+  </p>
+  <h2>ペットの種類</h2>
+  <p><%= f.text_area :kind, placeholder: "オカメインコ" %></p>
+  <h2>性別</h2>
+  <p><%= f.radio_button :gender, :オス, checked: true %>
+  <%= f.label "オス" %>
+  <%= f.radio_button :gender, :メス %>
+  <%= f.label "メス" %>
+  <%= f.radio_button :gender, :不明 %>
+  <%= f.label "不明" %>
+  </p>
+  <h2>保護した日</h2>
+  <%= f.date_select :arrival_date, {}, class: 'form-control' %>
+  <h2>ペットの写真</h2>
+  <%= f.file_field :image %>
+  <h2>保護した場所</h2>
+  <%= f.select :prefecture, Pet.areas.keys, {} %>
+  <%= f.text_field :area, placeholder: "市区町村" %>
+  <%= f.text_field :area, placeholder: "○○公園" %>
+  <h2>ペットの詳細</h2>
+  <%= f.text_area :feature, placeholder: "説明文入ります。" %>
+  <div class="btn_group clearfix">
+    <p class="btn_save"><%= f.submit "送信" %></p>
+    <p class="btn_cancel"><%= link_to "キャンセル", :back %></p>
+  </div>
+<% end %>

@@ -7,6 +7,8 @@ ruby '2.6.5'
 gem 'rails', '~> 5.2.4'
 gem 'devise'
 gem 'rb-readline'
+gem 'carrierwave'
+gem 'mini_magick'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
