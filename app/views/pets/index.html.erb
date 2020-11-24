@@ -1,24 +1,8 @@
-<h1>ペット一覧</h1>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
-  <%= link_to "tech blog", "#", id: "logo", class: "navbar-brand" %>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <%= link_to "Home", "#", class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Blog", "#", class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Contents", "#", class: "nav-link" %>
-    </li>
-  </ul>
-</nav>
-
-<div>
 <% @pets.each do |pet| %>
-  <p><%= link_to image_tag(pet.image.url), pet_path(pet.id) %></p>
+<div class="col-sm-12 col-md-4">
+  <p class="img-fluid"><%= link_to image_tag(pet.image.url, class: "img-fluid"), pet_path(pet.id) %></p>
   <p class="pet_feature"><%= link_to pet.feature, pet_path(pet.id) %></p>
   <p class="pet_created_at"><%= link_to pet.created_at, pet_path(pet.id) %></p>
-<% end %>
 </div>
+<% end %>
