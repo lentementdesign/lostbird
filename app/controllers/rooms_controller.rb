@@ -1,6 +1,13 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
   def index
+    @currentEntries = current_user.entries
+    myRoomIds = []
+    @currentEntries.each do |entry|
+      myRoomIds << entry.room.id
+    end
+    @user = current_user
+    @anotherEntries = Entry.where(room_id: myRoomIds).where('user_id != ?',@user.id)
   end
 
   def create
@@ -20,7 +27,5 @@ class RoomsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
-
 
 end

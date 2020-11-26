@@ -1,8 +1,25 @@
+
+<div class="col-sm-12">
 <h1>ユーザー詳細</h1>
 
-<h2><%= @user.email %></h2>
+<h2>ニックネーム</h2>
+<p><%= @user.nickname %></p>
+
+<h2>メールアドレス</h2>
+<p><%= @user.email %></p>
+
+<h2>パスワード</h2>
+<p><%= @user.password %></p>
+
+<h2>登録しているペット</h2>
+  <% @pets.each do |pet| %>
+  <p><%= link_to pet.kind, pet_path(pet.id) %></p>
+  <% end %>
+
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 
 <% if @user.id == current_user.id %>
+<%= link_to "編集", edit_user_registration_path %>
 
 <% else %>
   <% if @isRoom == true %>
@@ -18,3 +35,4 @@
 <% end %>
 
 <%= link_to "ユーザー一覧に戻る", users_path %>
+</div>

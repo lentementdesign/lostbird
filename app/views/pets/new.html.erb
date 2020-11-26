@@ -1,3 +1,5 @@
+
+<div class="col-sm-12">
 <h1>ペット情報登録</h1>
 
 <%= form_with(model: @pet, local: true) do |f| %>
@@ -17,14 +19,14 @@
   <%= f.radio_button :gender, :不明 %>
   <%= f.label "不明" %>
   </p>
-  <h2>保護した日</h2>
-  <%= f.date_select :arrival_date, {}, class: 'form-control' %>
+  <h2>迷子になった日</h2>
+  <%= f.date_select :lost_day, {}, class: 'form-control' %>
   <h2>ペットの写真</h2>
   <%= f.file_field :image %>
   <h2>保護した場所</h2>
   <%= f.select :prefecture, Pet.areas.keys, {} %>
   <%= f.text_field :area, placeholder: "市区町村" %>
-  <%= f.text_field :area, placeholder: "○○公園" %>
+  <%= f.text_field :place, placeholder: "○○公園" %>
   <h2>ペットの詳細</h2>
   <%= f.text_area :feature, placeholder: "説明文入ります。" %>
   <div class="btn_group clearfix">
@@ -32,3 +34,4 @@
     <p class="btn_cancel"><%= link_to "キャンセル", :back %></p>
   </div>
 <% end %>
+</div>

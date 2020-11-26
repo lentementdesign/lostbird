@@ -10,13 +10,10 @@
   </head>
 
   <body>
+    <h1><%= link_to "lostbird", pets_path %></h1>
     <% if user_signed_in? %>
-    <h2>Hello <%= current_user.email %></h2>
-      <% @users.each do |u| %>
-        <p><a href="/users/<%= u.id %>"><%= u.email %>さん</a></p>
-        <hr>
-      <% end %>
-      <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+    <h2><%= link_to current_user.nickname, user_path(current_user.id) %></h2>
+    <h2><%= link_to "メッセージ一覧", rooms_path %></h2>
     <% else %>
       <%= link_to "ユーザーを登録する", new_user_registration_path %>
       <br>
@@ -28,6 +25,6 @@
         <%= yield %>
       </div>
     </div>
-    
+
   </body>
 </html>
