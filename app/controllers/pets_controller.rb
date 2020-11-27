@@ -24,7 +24,7 @@ class PetsController < ApplicationController
     @user = @pet.user
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
-    
+
     unless @user.id == current_user.id
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
@@ -44,6 +44,6 @@ class PetsController < ApplicationController
 
   private
   def pet_params
-    params.require(:pet).permit(:name, :kind, :gender, :feature, :photo, :lost, :find_place, :find_day, :lost_place, :lost_day, :wanted,:image, :image_cache)
+    params.require(:pet).permit(:name, :kind, :gender, :feature, :photo, :lost, :find_place, :find_day, :lost_place, :lost_day, :wanted, :image, :image_cache, :prefecture, :area, :place)
   end
 end

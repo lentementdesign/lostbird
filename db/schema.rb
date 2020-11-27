@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_093136) do
     t.date "find_day"
     t.date "lost_day"
     t.string "find_prefecture"
-    t.string "prefecture", default: "0", null: false
+    t.integer "prefecture", default: 0, null: false
     t.string "area"
     t.string "place"
     t.boolean "wanted", default: true, null: false

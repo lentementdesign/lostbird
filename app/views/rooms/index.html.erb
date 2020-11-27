@@ -1,6 +1,9 @@
+<div class="col-sm-12">
 <% @anotherEntries.each do |e| %>
   <%= link_to room_path(e.room.id) do %>
-    <%= e.user.nickname %>さん<br>
-    
+    <p><%= e.user.nickname %>さん</p>
+    <p><%= e.room.messages.last.content %></p>
+    <p><%= e.room.messages.last.created_at %></p>
   <% end %>
 <% end %>
+</div>

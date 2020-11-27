@@ -10,7 +10,7 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.date :find_day
       t.date :lost_day
       t.string :find_prefecture
-      t.string :prefecture, null: false, default: 0
+      t.integer :prefecture, null: false, default: 0
       t.string :area
       t.string :place
       t.boolean :wanted, null: false, default: true

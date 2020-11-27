@@ -9,6 +9,9 @@ gem 'devise'
 gem 'rb-readline'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'pry-rails'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

@@ -24,7 +24,7 @@
   <h2>ペットの写真</h2>
   <%= f.file_field :image %>
   <h2>保護した場所</h2>
-  <%= f.select :prefecture, Pet.areas.keys, {} %>
+  <%= f.select :prefecture, Pet.prefectures.keys, {} %>
   <%= f.text_field :area, placeholder: "市区町村" %>
   <%= f.text_field :place, placeholder: "○○公園" %>
   <h2>ペットの詳細</h2>

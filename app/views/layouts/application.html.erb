@@ -4,21 +4,44 @@
     <title>Lostbird</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <h1><%= link_to "lostbird", pets_path %></h1>
-    <% if user_signed_in? %>
-    <h2><%= link_to current_user.nickname, user_path(current_user.id) %></h2>
-    <h2><%= link_to "メッセージ一覧", rooms_path %></h2>
-    <% else %>
-      <%= link_to "ユーザーを登録する", new_user_registration_path %>
-      <br>
-      <%= link_to "ログインする", new_user_session_path %>
-    <% end %>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mr-auto">
+      <div class="container">
+        <h1><%= link_to "lostbird", pets_path %></h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+            <p><%= link_to "メッセージ一覧", rooms_path, class: "nav-item nav-link" %></p>
+            <p><%= link_to current_user.nickname, user_path(current_user.id), class: "nav-item nav-link" %></p>
+            <% else %>
+              <%= link_to "ユーザーを登録する", new_user_registration_path, class: "nav-item nav-link" %>
+              <br>
+              <%= link_to "ログインする", new_user_session_path, class: "nav-item nav-link" %>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+
+
+
+
+
+
+
+
 
     <div class="container">
       <div class="row">
