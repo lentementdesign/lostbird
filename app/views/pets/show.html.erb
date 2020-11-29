@@ -14,8 +14,41 @@
   <p class="name">名前：<%= @pet.name %></p>
   <p class="kind">種類：<%= @pet.kind %></p>
   <p class="kind">迷子になった日：<%= @pet.lost_day %></p>
-  <p class="kind">迷子になった場所：<%= @pet.prefecture %><%= @pet.area %><%= @pet.place %></p>
 </div>
+
+<div class="col-sm-12">
+  <p><%= @pet.address %></p>
+  <div id="map"></div>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    #map {
+      height: 340px;
+      width: 100%;
+    }
+    #map img {
+      max-width: none;
+    }
+  </style>
+
+  <script>
+    function initMap() {
+      var uluru = {lat: <%= @pet.latitude %>, lng: <%= @pet.longitude %>};
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      enter: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
+  </script>
+</div>
+
 
 <div class="col-sm-12">
   <p class="kind"><%= @pet.feature %></p>
