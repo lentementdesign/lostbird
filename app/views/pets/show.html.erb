@@ -21,6 +21,7 @@
   <p class="kind"><%= @pet.feature %></p>
 </div>
 
+<% if user_signed_in? %>
 <div class="col-sm-12">
 <% if @user.id == current_user.id %>
 <%= link_to "編集", edit_pet_path(@pet.id) %>
@@ -38,3 +39,4 @@
   <% end %>
 <% end %>
 </div>
+<% end %>
