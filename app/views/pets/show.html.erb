@@ -17,7 +17,7 @@
 </div>
 
 <div class="col-sm-12">
-  <p><%= @pet.address %></p>
+  <p><%= @pet.place %></p>
 
   <div id="map"></div>(地図を表示)
   ・・・
@@ -48,7 +48,7 @@
           var transitLayer = new google.maps.TransitLayer();
           transitLayer.setMap(map);
 
-          var contentString = '住所：<%= @pet.address %>';
+          var contentString = '住所：<%= @pet.area %>';
           var infowindow = new google.maps.InfoWindow({
               content: contentString
           });

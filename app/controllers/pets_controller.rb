@@ -9,6 +9,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user_id = current_user.id
+    @pet.area = params[:pet][:prefecture].to_s + " " + params[:pet][:place].to_s
     if @pet.save
       redirect_to pets_path, notice: "保存しました"
     else
@@ -47,6 +48,6 @@ class PetsController < ApplicationController
 
   private
   def pet_params
-    params.require(:pet).permit(:name, :kind, :gender, :feature, :photo, :lost, :find_day, :lost_day, :wanted, :image, :image_cache, :address, :latitude, :longitude)
+    params.require(:pet).permit(:name, :kind, :gender, :feature, :photo, :lost, :find_day, :lost_day, :wanted, :image, :image_cache, :latitude, :longitude, :prefecture, :place, :area)
   end
 end
