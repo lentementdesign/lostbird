@@ -1,26 +1,35 @@
+
+
+
+
 <div class="col-sm-12">
   <% if @pet.lost == true %>
     <h2>迷子</h2>
-    <% else %>
+  <% elsif @pet.lost == false %>
     <h2>保護</h2>
   <% end %>
-
 </div>
 
 <div class="col-sm-12 col-md-4">
   <%= image_tag(@pet.image.url, class: "img-fluid") %>
 </div>
 <div class="col-sm-12 col-md-8">
-  <p class="name">名前：<%= @pet.name %></p>
-  <p class="kind">種類：<%= @pet.kind %></p>
-  <p class="kind">迷子になった日：<%= @pet.lost_day %></p>
+  <% if @pet.lost == true %>
+    <p class="name">名前：<%= @pet.name %></p>
+    <p class="kind">種類：<%= @pet.kind %></p>
+    <p class="kind">迷子になった日：<%= @pet.lost_day %></p>
+    <p class="kind">性別：<%= @pet.gender %></p>
+  <% else %>
+    <p class="name">名前：<%= @pet.name %></p>
+    <p class="kind">種類：<%= @pet.kind %></p>
+    <p class="kind">保護した日：<%= @pet.lost_day %></p>
+    <p class="kind">性別：<%= @pet.gender %></p>
+  <% end %>
 </div>
 
 <div class="col-sm-12">
   <p><%= @pet.place %></p>
-
-  <div id="map"></div>(地図を表示)
-  ・・・
+  <div id="map"></div>
 
   <style>(地図の大きさ指定)
   #map{
@@ -74,6 +83,9 @@
 <div class="col-sm-12">
   <p class="kind"><%= @pet.feature %></p>
 </div>
+
+
+
 
 <% if user_signed_in? %>
 <div class="col-sm-12">

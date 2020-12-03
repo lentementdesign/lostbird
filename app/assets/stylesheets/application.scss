@@ -4,3 +4,24 @@
 .form_control {
   width: 20%;
 }
+.invisible {
+ display: none;
+}
+
+#form-page {
+  max-width: 600px;
+  h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 1.4rem;
+  }
+  .btn_save, .btn_cancel {
+    float: left;
+    margin: 1rem 1rem 2rem 0;
+  }
+}
