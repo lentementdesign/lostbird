@@ -19,11 +19,13 @@
     <p class="kind">種類：<%= @pet.kind %></p>
     <p class="kind">迷子になった日：<%= @pet.lost_day %></p>
     <p class="kind">性別：<%= @pet.gender %></p>
+    <p class="feature"><%= @pet.feature %></p>
   <% else %>
     <p class="name">名前：<%= @pet.name %></p>
     <p class="kind">種類：<%= @pet.kind %></p>
     <p class="kind">保護した日：<%= @pet.lost_day %></p>
     <p class="kind">性別：<%= @pet.gender %></p>
+    <p class="feature"><%= @pet.feature %></p>
   <% end %>
 </div>
 
@@ -68,9 +70,6 @@
 
 </div>
 
-<div class="col-sm-12">
-  <p class="feature"><%= @pet.feature %></p>
-</div>
 
 <% if user_signed_in? %>
   <div class="col-sm-12">
