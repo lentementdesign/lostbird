@@ -1,10 +1,26 @@
 class PetsController < ApplicationController
   def index
-    @pets = Pet.all
+    if params[:rescued]
+      @pets = Pet.where(lost: false)
+    elsif params[:lost]
+      @pets = Pet.where(lost: true)
+    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:prefecture].present?
+      @pets = Pet.kind_like(params[:keyword]).prefecture_match(params[:prefecture])
+    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択"
+      @pets = Pet.kind_like(params[:keyword])
+    elsif params[:prefecture].present? && params[:prefecture] != "都道府県を選択"
+      @pets = Pet.prefecture_match(params[:prefecture])
+    else
+      @pets = Pet.where(lost: true)
+    end
   end
 
   def new
-    @pet = Pet.new
+    if user_signed_in?
+      @pet = Pet.new
+    else
+      redirect_to new_user_registration_path, notice: "ユーザー登録が必要です"
+    end
   end
   def create
     @pet = Pet.new(pet_params)

@@ -1,10 +1,16 @@
-
-
 <div class="col-sm-12">
-<%= link_to "ペットを登録", new_pet_path %>
-
+  <div class="float-right"><%= link_to "ペットを登録", new_pet_path %></div>
+  <div class="btns_lost">
+    <p><%= link_to "迷子", pets_path(lost: "true"), class: "btn btn-primary btn_lost" %>　<%= link_to "保護", pets_path(rescued: "true"), class: "btn btn-primary btn_rescued" %></p>
+  </div>
+  <div id="searchbox">
+    <%= form_with(url: pets_path, local: true, method: :get, class: 'form-inline') do |f| %>
+      <%= f.select :prefecture, Pet.prefectures.keys.to_a, {selected: params[:prefecture]}, {class: 'form-control'} %>
+      <%= f.text_field :keyword, id: "kind_name", placeholder: "種類、例：オカメインコ", value: params[:keyword], class: 'form-control' %>
+      <%= f.submit '検索', class: "decision btn btn-info" %>
+    <% end %>
+  </div>
 </div>
-
 
 <% @pets.each do |pet| %>
 <div class="col-sm-12 col-md-4">

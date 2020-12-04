@@ -1,4 +1,12 @@
 class Pet < ApplicationRecord
+  scope :kind_like, -> kind {where('kind like ?', "%#{kind}%")}
+  scope :prefecture_match, -> (params) {where(prefecture: (params))}
+  validates :gender, presence: true
+  validates :feature, presence: true
+  validates :image, presence: true
+  validates :prefecture, presence: true
+  validates :place, presence: true
+  validates :area, presence: true
   belongs_to :user
   mount_uploader :image, ImageUploader
   enum prefecture:{

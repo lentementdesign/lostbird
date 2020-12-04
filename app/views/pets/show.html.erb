@@ -28,24 +28,13 @@
 </div>
 
 <div class="col-sm-12">
-  <p><%= @pet.place %></p>
+  <% if @pet.lost == true %>
+    <p>迷子になった場所：<%= @pet.area %></p>
+  <% elsif @pet.lost == false %>
+    <p>保護した場所：<%= @pet.area %></p>
+  <% end %>
   <div id="map"></div>
 
-  <style>(地図の大きさ指定)
-  #map{
-    height: 150px;
-    width:270px;
-  }
-  </style>
-
-
-  <div id="map"></div>
-  <style>
-       #map {
-       height: 500px;
-       width: 70%;
-      }
-  </style>
   <script type="text/javascript">
       function initMap() {
 
@@ -79,30 +68,25 @@
 
 </div>
 
-
 <div class="col-sm-12">
-  <p class="kind"><%= @pet.feature %></p>
+  <p class="feature"><%= @pet.feature %></p>
 </div>
-
-
-
 
 <% if user_signed_in? %>
-<div class="col-sm-12">
-<% if @user.id == current_user.id %>
-<%= link_to "編集", edit_pet_path(@pet.id) %>
-
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <div class="col-sm-12">
+  <% if @user.id == current_user.id %>
+    <%= link_to "編集", edit_pet_path(@pet.id) %>
   <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
+    <% if @isRoom == true %>
+      <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @user.id %>
+        <% end %>
+        <%= f.submit "チャットを始める" %>
       <% end %>
-      <%= f.submit "チャットを始める" %>
     <% end %>
   <% end %>
-<% end %>
-</div>
+  </div>
 <% end %>
