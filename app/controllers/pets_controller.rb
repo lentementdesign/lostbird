@@ -19,7 +19,8 @@ class PetsController < ApplicationController
     if user_signed_in?
       @pet = Pet.new
     else
-      redirect_to new_user_registration_path, notice: "ユーザー登録が必要です"
+      flash[:info] = "ユーザー登録が必要です"
+      redirect_to new_user_registration_path
     end
   end
   def create
@@ -27,7 +28,8 @@ class PetsController < ApplicationController
     @pet.user_id = current_user.id
     @pet.area = params[:pet][:prefecture].to_s + " " + params[:pet][:place].to_s
     if @pet.save
-      redirect_to pets_path, notice: "保存しました"
+      flash[:success] = "保存しました"
+      redirect_to pets_path
     else
       render :new
     end

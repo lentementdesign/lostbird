@@ -19,9 +19,29 @@ a:hover, a img:hover {
 img {
   border-radius: 24px;
 }
+#addpet {
+  margin-top: 2rem;
+}
 
+.device-page {
+  h1 {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+  form {
+    padding: 2.6rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 4rem;
+  }
+  @media (min-width: 576px) {
+    form {
+      width: 420px;
+    }
+  }
 
-
+}
 
 
 

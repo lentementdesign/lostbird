@@ -1,7 +1,7 @@
-<div class="col-sm-12 d-flex justify-content-center" id="newsession_page">
+<div class="col-sm-12 d-flex justify-content-center device-page">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <h2>ログイン</h2>
+  <h1>ログイン</h1>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
