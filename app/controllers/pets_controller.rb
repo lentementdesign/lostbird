@@ -1,17 +1,17 @@
 class PetsController < ApplicationController
   def index
     if params[:rescued]
-      @pets = Pet.where(lost: false)
+      @pets = Pet.where(status: "保護").order(created_at: "DESC")
     elsif params[:lost]
-      @pets = Pet.where(lost: true)
+      @pets = Pet.where(status: "迷子").order(created_at: "DESC")
     elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:prefecture].present?
-      @pets = Pet.kind_like(params[:keyword]).prefecture_match(params[:prefecture])
+      @pets = Pet.kind_like(params[:keyword]).prefecture_match(params[:prefecture]).order(created_at: "DESC")
     elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択"
-      @pets = Pet.kind_like(params[:keyword])
+      @pets = Pet.kind_like(params[:keyword]).order(created_at: "DESC")
     elsif params[:prefecture].present? && params[:prefecture] != "都道府県を選択"
-      @pets = Pet.prefecture_match(params[:prefecture])
+      @pets = Pet.prefecture_match(params[:prefecture]).order(created_at: "DESC")
     else
-      @pets = Pet.where(lost: true)
+      @pets = Pet.all.order(created_at: "DESC")
     end
   end
 
@@ -66,6 +66,6 @@ class PetsController < ApplicationController
 
   private
   def pet_params
-    params.require(:pet).permit(:name, :kind, :gender, :feature, :photo, :lost, :find_day, :lost_day, :wanted, :image, :image_cache, :latitude, :longitude, :prefecture, :place, :area)
+    params.require(:pet).permit(:name, :kind, :gender, :feature, :photo, :status, :find_day, :lost_day, :wanted, :image, :image_cache, :latitude, :longitude, :prefecture, :place, :area)
   end
 end

@@ -6,9 +6,9 @@
   <div id="tr0">
     <h2>迷子 or 保護</h2>
     <p>
-      <%= f.radio_button :lost, true, checked: true, name: "use", id: "radio1" %>
+      <%= f.radio_button :status, :迷子, id: "radio1", checked: true, class: "lost_or_rescued" %>
       <%= f.label "迷子" %>
-      <%= f.radio_button :lost, false,  name: "use", id: "radio2" %>
+      <%= f.radio_button :status, :保護, id: "radio2", class: "lost_or_rescued" %>
       <%= f.label "保護" %>
     </p>
   </div>
@@ -46,17 +46,16 @@
     </div>
   </div>
 
-  <div id="tr2">
+<div id="tr2">
     <h2>ペットの種類</h2>
     <p><%= f.text_field :kind, placeholder: "オカメインコ", class: "form-control" %></p>
     <h2>性別</h2>
-    <%= f.radio_button :gender, :オス, checked: true %>
+    <%= f.radio_button :gender, :オス %>
     <%= f.label "オス" %>
     <%= f.radio_button :gender, :メス %>
     <%= f.label "メス" %>
     <%= f.radio_button :gender, :不明 %>
     <%= f.label "不明" %>
-
 
     <h2>保護した日</h2>
     <%= f.date_select :find_day, {}, class: 'form-control' %>
@@ -80,12 +79,12 @@
 $(function() {
     $('input[type=radio]').change(function() {
         $('#tr1,#tr2').removeClass('invisible');
-        if ($("input:radio[name='use']:checked").val() == "true") {
+        if ($("input:radio[class='lost_or_rescued']:checked").val() == "迷子") {
             $('#tr2').addClass('invisible');
-            $('#tr2').prop('disabled', true);
-        } else if($("input:radio[name='use']:checked").val() == "false") {
+            $('#tr2').prop('disabled',true);
+        } else if($("input:radio[class='lost_or_rescued']:checked").val() == "保護") {
             $('#tr1').addClass('invisible');
-            $('#tr1').prop('disabled', true);
+            $('#tr1').prop('disabled',true);
         }
     }).trigger('change'); //←(1)
 });

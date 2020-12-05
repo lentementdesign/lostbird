@@ -2,6 +2,7 @@ class Pet < ApplicationRecord
   scope :kind_like, -> kind {where('kind like ?', "%#{kind}%")}
   scope :prefecture_match, -> (params) {where(prefecture: (params))}
   validates :gender, presence: true
+  validates :status, presence: true
   validates :feature, presence: true
   validates :image, presence: true
   validates :prefecture, presence: true
