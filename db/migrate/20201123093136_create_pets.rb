@@ -6,7 +6,7 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.string :gender, null: false
       t.text :feature, null: false
       t.text :image, null: false
-      t.string :status, null: false, default: "迷子"
+      t.integer :status, null: false, default: 1
       t.date :find_day
       t.date :lost_day
       t.integer :prefecture, null: false, default: 0

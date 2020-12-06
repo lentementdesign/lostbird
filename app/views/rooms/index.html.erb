@@ -1,4 +1,7 @@
 <div class="col-sm-12">
+<% if @anotherEntries.count == 0 %>
+  <p>メッセージがありません。</p>
+<% end %>
 <% @anotherEntries.each do |e| %>
   <%= link_to room_path(e.room.id) do %>
     <p><%= e.user.nickname %>さん</p>

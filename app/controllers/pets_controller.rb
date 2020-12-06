@@ -1,15 +1,27 @@
 class PetsController < ApplicationController
   def index
-    if params[:rescued]
-      @pets = Pet.where(status: "保護").order(created_at: "DESC")
-    elsif params[:lost]
-      @pets = Pet.where(status: "迷子").order(created_at: "DESC")
-    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:prefecture].present?
+    if params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:prefecture].present? && params[:status] == "迷子"
+      @pets = Pet.kind_like(params[:keyword]).prefecture_match(params[:prefecture]).where(status: "迷子").order(created_at: "DESC")
+    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:prefecture].present? && params[:status] == "保護"
+      @pets = Pet.kind_like(params[:keyword]).prefecture_match(params[:prefecture]).where(status: "保護").order(created_at: "DESC")
+    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:prefecture].present? && params[:status] == "すべてのステータス"
       @pets = Pet.kind_like(params[:keyword]).prefecture_match(params[:prefecture]).order(created_at: "DESC")
-    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択"
+    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:status] == "迷子"
+      @pets = Pet.kind_like(params[:keyword]).where(status: "迷子").order(created_at: "DESC")
+    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:status] == "保護"
+      @pets = Pet.kind_like(params[:keyword]).where(status: "保護").order(created_at: "DESC")
+    elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:status] == "すべてのステータス"
       @pets = Pet.kind_like(params[:keyword]).order(created_at: "DESC")
-    elsif params[:prefecture].present? && params[:prefecture] != "都道府県を選択"
+    elsif params[:prefecture].present? && params[:prefecture] != "都道府県を選択" && params[:status] == "迷子"
+      @pets = Pet.prefecture_match(params[:prefecture]).where(status: "迷子").order(created_at: "DESC")
+    elsif params[:prefecture].present? && params[:prefecture] != "都道府県を選択" && params[:status] == "保護"
+      @pets = Pet.prefecture_match(params[:prefecture]).where(status: "保護").order(created_at: "DESC")
+    elsif params[:prefecture].present? && params[:prefecture] != "都道府県を選択" && params[:status] == "保護"
       @pets = Pet.prefecture_match(params[:prefecture]).order(created_at: "DESC")
+    elsif params[:status] == "保護"
+      @pets = Pet.where(status: "保護").order(created_at: "DESC")
+    elsif params[:status] == "迷子"
+      @pets = Pet.where(status: "迷子").order(created_at: "DESC")
     else
       @pets = Pet.all.order(created_at: "DESC")
     end
@@ -37,7 +49,6 @@ class PetsController < ApplicationController
 
   def edit
   end
-
 
   def show
     @pet = Pet.find(params[:id])

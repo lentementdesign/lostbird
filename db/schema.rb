@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_093136) do
     t.string "gender", null: false
     t.text "feature", null: false
     t.text "image", null: false
-    t.string "status", default: "迷子", null: false
+    t.integer "status", default: 1, null: false
     t.date "find_day"
     t.date "lost_day"
     t.integer "prefecture", default: 0, null: false

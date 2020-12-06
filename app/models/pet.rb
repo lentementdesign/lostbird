@@ -1,6 +1,14 @@
 class Pet < ApplicationRecord
   scope :kind_like, -> kind {where('kind like ?', "%#{kind}%")}
   scope :prefecture_match, -> (params) {where(prefecture: (params))}
+  scope :not_select, -> {params[:prefecture] != "都道府県を選択"}
+  scope :present, -> {params[:prefecture].present?}
+  scope :keyword, -> {params[:keyword].present?}
+  scope :lost, -> {where(status: "迷子")}
+  scope :rescued, -> {where(status: "保護")}
+  scope :sorted, -> {order(created_at: "DESC")}
+  scope :sort_lost, -> {kind_like.prefecture_match.not_select.present.keyword.lost.sorted}
+
   validates :gender, presence: true
   validates :status, presence: true
   validates :feature, presence: true
@@ -21,6 +29,11 @@ class Pet < ApplicationRecord
       徳島県:36,香川県:37,愛媛県:38,高知県:39,
       福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
       沖縄県:47
+  }
+  enum status:{
+    すべてのステータス:0,
+    迷子:1,
+    保護:2
   }
   geocoded_by :area
   after_validation :geocode, if: :area_changed?

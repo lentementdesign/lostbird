@@ -6,9 +6,9 @@
   <div id="tr0">
     <h2>迷子 or 保護</h2>
     <p>
-      <%= f.radio_button :status, :迷子, id: "radio1", checked: true, class: "lost_or_rescued" %>
+      <%= f.radio_button :status, Pet.statuses.keys[1], class: "lost_or_rescued" %>
       <%= f.label "迷子" %>
-      <%= f.radio_button :status, :保護, id: "radio2", class: "lost_or_rescued" %>
+      <%= f.radio_button :status, Pet.statuses.keys[2], class: "lost_or_rescued" %>
       <%= f.label "保護" %>
     </p>
   </div>
@@ -21,11 +21,11 @@
 
     <h2>性別</h2>
     <p>
-      <%= f.radio_button :gender, :オス, checked: true %>
+      <%= f.radio_button :gender, :オス, checked: true, class: 'form-control' %>
       <%= f.label "オス" %>
-      <%= f.radio_button :gender, :メス %>
+      <%= f.radio_button :gender, :メス, class: 'form-control' %>
       <%= f.label "メス" %>
-      <%= f.radio_button :gender, :不明 %>
+      <%= f.radio_button :gender, :不明, class: 'form-control' %>
       <%= f.label "不明" %>
     </p>
 
@@ -46,15 +46,15 @@
     </div>
   </div>
 
-<div id="tr2">
+  <div id="tr2">
     <h2>ペットの種類</h2>
     <p><%= f.text_field :kind, placeholder: "オカメインコ", class: "form-control" %></p>
     <h2>性別</h2>
-    <%= f.radio_button :gender, :オス %>
+    <%= f.radio_button :gender, :オス, class: 'form-control' %>
     <%= f.label "オス" %>
-    <%= f.radio_button :gender, :メス %>
+    <%= f.radio_button :gender, :メス, checked: true, class: 'form-control' %>
     <%= f.label "メス" %>
-    <%= f.radio_button :gender, :不明 %>
+    <%= f.radio_button :gender, :不明, class: 'form-control' %>
     <%= f.label "不明" %>
 
     <h2>保護した日</h2>
@@ -81,10 +81,12 @@ $(function() {
         $('#tr1,#tr2').removeClass('invisible');
         if ($("input:radio[class='lost_or_rescued']:checked").val() == "迷子") {
             $('#tr2').addClass('invisible');
-            $('#tr2').prop('disabled',true);
+            $('#tr2 .form-control').prop('disabled', true);
+            $('#tr1 .form-control').prop('disabled', false);
         } else if($("input:radio[class='lost_or_rescued']:checked").val() == "保護") {
             $('#tr1').addClass('invisible');
-            $('#tr1').prop('disabled',true);
+            $('#tr1 .form-control').prop('disabled', true);
+            $('#tr2 .form-control').prop('disabled', false);
         }
     }).trigger('change'); //←(1)
 });
