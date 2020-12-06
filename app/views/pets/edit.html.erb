@@ -1,2 +1,105 @@
-<h1>Pets#edit</h1>
-<p>Find me in app/views/pets/edit.html.erb</p>
+
+<div class="col-sm-12" id="form-page">
+
+<% if @pet.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @pet.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @pet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h1>ペット登録</h1>
+<%= form_with(model: @pet, local: true, class: 'form-inline') do |f| %>
+
+  <div id="tr0">
+    <h2>迷子 or 保護</h2>
+    <p>
+      <%= f.radio_button :status, Pet.statuses.keys[1], class: "lost_or_rescued" %>
+      <%= f.label "迷子" %>
+      <%= f.radio_button :status, Pet.statuses.keys[2], class: "lost_or_rescued" %>
+      <%= f.label "保護" %>
+    </p>
+  </div>
+
+  <div id="tr1">
+    <h2>ペットの名前</h2>
+    <p><%= f.text_field :name, placeholder: "小太郎", class: "form-control" %></p>
+    <h2>ペットの種類</h2>
+    <p><%= f.text_field :kind, placeholder: "オカメインコ", class: "form-control" %></p>
+
+    <h2>性別</h2>
+    <p>
+      <%= f.radio_button :gender, :オス, checked: true, class: 'form-control' %>
+      <%= f.label "オス" %>
+      <%= f.radio_button :gender, :メス, class: 'form-control' %>
+      <%= f.label "メス" %>
+      <%= f.radio_button :gender, :不明, class: 'form-control' %>
+      <%= f.label "不明" %>
+    </p>
+
+    <h2>迷子になった日</h2>
+    <p><%= f.date_select :lost_day, {}, class: 'form-control' %></p>
+    <h2>ペットの写真</h2>
+    <p><%= f.file_field :image, class: 'form-control-file' %></p>
+    <h2>迷子になった場所</h2>
+    <p>
+      <%= f.select :prefecture, Pet.prefectures.keys, {}, class: 'form-control col-md-4' %>
+      <%= f.text_field :place, placeholder: "淵野辺公園", class: "form-control col-md-4" %>
+    </p>
+    <h2>ペットの詳細</h2>
+    <%= f.text_area :feature, placeholder: "説明文入ります。", class: "form-control" %>
+    <div class="btn_group clearfix">
+      <p class="btn_save"><%= f.submit "保存", class: "btn btn-primary" %></p>
+      <p class="btn_cancel"><%= link_to "キャンセル", :back, class: "btn btn-light" %></p>
+    </div>
+  </div>
+
+  <div id="tr2">
+    <h2>ペットの種類</h2>
+    <p><%= f.text_field :kind, placeholder: "オカメインコ", class: "form-control" %></p>
+    <h2>性別</h2>
+    <%= f.radio_button :gender, :オス, class: 'form-control' %>
+    <%= f.label "オス" %>
+    <%= f.radio_button :gender, :メス, checked: true, class: 'form-control' %>
+    <%= f.label "メス" %>
+    <%= f.radio_button :gender, :不明, class: 'form-control' %>
+    <%= f.label "不明" %>
+
+    <h2>保護した日</h2>
+    <%= f.date_select :find_day, {}, class: 'form-control' %>
+    <h2>ペットの写真</h2>
+    <%= f.file_field :image, class: 'form-control-file' %>
+    <h2>保護した場所</h2>
+    <%= f.select :prefecture, Pet.prefectures.keys, {}, class: 'form-control col-md-4' %>
+    <%= f.text_field :place, placeholder: "淵野辺公園", class: "form-control col-md-4" %>
+    <h2>ペットの詳細</h2>
+    <%= f.text_area :feature, placeholder: "説明文入ります。", class: "form-control" %>
+    <div class="btn_group clearfix">
+      <p class="btn_save"><%= f.submit "保存", class: "btn btn-primary" %></p>
+      <p class="btn_cancel"><%= link_to "キャンセル", :back, class: "btn btn-light" %></p>
+    </div>
+  </div>
+<% end %>
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $('input[type=radio]').change(function() {
+        $('#tr1,#tr2').removeClass('invisible');
+        if ($("input:radio[class='lost_or_rescued']:checked").val() == "迷子") {
+            $('#tr2').addClass('invisible');
+            $('#tr2 .form-control').prop('disabled', true);
+            $('#tr1 .form-control').prop('disabled', false);
+        } else if($("input:radio[class='lost_or_rescued']:checked").val() == "保護") {
+            $('#tr1').addClass('invisible');
+            $('#tr1 .form-control').prop('disabled', true);
+            $('#tr2 .form-control').prop('disabled', false);
+        }
+    }).trigger('change'); //←(1)
+});
+</script>

@@ -1,13 +1,14 @@
 class Pet < ApplicationRecord
   scope :kind_like, -> kind {where('kind like ?', "%#{kind}%")}
   scope :prefecture_match, -> (params) {where(prefecture: (params))}
-  scope :not_select, -> {params[:prefecture] != "都道府県を選択"}
-  scope :present, -> {params[:prefecture].present?}
-  scope :keyword, -> {params[:keyword].present?}
-  scope :lost, -> {where(status: "迷子")}
-  scope :rescued, -> {where(status: "保護")}
-  scope :sorted, -> {order(created_at: "DESC")}
-  scope :sort_lost, -> {kind_like.prefecture_match.not_select.present.keyword.lost.sorted}
+  # scope :not_select, -> {params[:prefecture] != "都道府県を選択"}
+  # scope :present, -> {params[:prefecture].present?}
+  # scope :keyword, -> {params[:keyword].present?}
+  # scope :lost, -> {where(status: "迷子")}
+  # scope :rescued, -> {where(status: "保護")}
+  # scope :sorted, -> {order(created_at: "DESC")}
+  # scope :sort_lost, -> {kind_like.prefecture_match.not_select.present.keyword.lost.sorted}
+
 
   validates :gender, presence: true
   validates :status, presence: true

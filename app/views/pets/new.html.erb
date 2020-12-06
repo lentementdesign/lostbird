@@ -1,5 +1,17 @@
 
 <div class="col-sm-12" id="form-page">
+
+<% if @pet.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @pet.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @pet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h1>ペット登録</h1>
 <%= form_with(model: @pet, local: true, class: 'form-inline') do |f| %>
 

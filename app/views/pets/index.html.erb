@@ -1,6 +1,4 @@
 
-
-
 <div class="col-sm-12">
   <div class="float-right"><p id="addpet"><%= link_to "ペットを登録", new_pet_path %></p></div>
 
@@ -22,3 +20,4 @@
   <p class="pet_created_at"><%= link_to pet.created_at, pet_path(pet.id) %></p>
 </div>
 <% end %>
+<%= paginate @pets %>
