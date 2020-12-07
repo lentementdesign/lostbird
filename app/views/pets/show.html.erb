@@ -11,6 +11,16 @@
   <%= image_tag(@pet.image.url, class: "img-fluid") %>
 </div>
 <div class="col-sm-12 col-md-8">
+
+
+
+  <% if user_signed_in? %>
+    <% if @user.id == current_user.id %>
+      <%= link_to "編集", edit_pet_path(@pet.id) %>
+    <% end %>
+  <% end %>
+
+
   <% if @pet.status == "迷子" %>
     <p class="name">名前：<%= @pet.name %></p>
     <p class="kind">種類：<%= @pet.kind %></p>
@@ -69,17 +79,15 @@
 
 <% if user_signed_in? %>
   <div class="col-sm-12">
-  <% if @user.id == current_user.id %>
-    <%= link_to "編集", edit_pet_path(@pet.id) %>
-  <% else %>
+  <% unless @user.id == current_user.id %>
     <% if @isRoom == true %>
-      <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+      <p><a href="/rooms/<%= @roomId %>">メッセージを送る</a>
     <% else %>
       <%= form_for @room do |f| %>
         <%= fields_for @entry do |e| %>
           <%= e.hidden_field :user_id, value: @user.id %>
         <% end %>
-        <%= f.submit "チャットを始める" %>
+        <%= f.submit "メッセージを送る" %>
       <% end %>
     <% end %>
   <% end %>

@@ -8,4 +8,26 @@ class MessagesController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
+  def edit
+    @message = Message.find(params[:id])
+  end
+  def update
+    @message = Message.find(params[:id])
+    if @message.update(message_params)
+      flash[:success] = "メッセージを編集しました！"
+      redirect_to room_path(id:@message.room_id)
+    else
+      render :edit
+    end
+  end
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+    flash[:success] = "メッセージを削除しました！"
+    redirect_to room_path(id:@message.room_id)
+  end
+  private
+  def message_params
+    params.require(:message).permit(:content)
+  end
 end

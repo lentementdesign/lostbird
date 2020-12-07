@@ -1,0 +1,8 @@
+<div class="col-sm-12">
+<h1>メッセージの編集</h1>
+<%= form_with(model: @message, local:true, method: :patch) do |f| %>
+  <%= f.text_field :content,　value: params[:content], size: 70 %>
+  <br>
+  <%= f.submit "保存する" %>
+<% end %>
+</div>

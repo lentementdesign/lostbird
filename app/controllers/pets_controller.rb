@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
   PER = 9
   def index
-    pet_page = Pet.page(params[:page]).per(PER).order(created_at: "DESC")
+    pet_page = Pet.page(params[:page]).includes(:user).per(PER).order(created_at: "DESC")
     if params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:prefecture].present? && params[:status] == "迷子"
       @pets = pet_page.kind_like(params[:keyword]).prefecture_match(params[:prefecture]).where(status: "迷子")
     elsif params[:keyword].present? && params[:prefecture] != "都道府県を選択" && params[:prefecture].present? && params[:status] == "保護"

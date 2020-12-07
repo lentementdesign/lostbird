@@ -1,17 +1,20 @@
 
-<div class="col-xs-12">
-<h1>DM</h1>
-
+<div class="col-xs-12" id="room-page">
+<h1>メッセージ</h1>
 <h4>参加者</h4>
 <% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.nickname%>さん</a></strong></h5>
+  <h5><strong><%= e.user.nickname%><% unless current_user.id == e.user_id %>さん<% end %></strong></h5>
 <% end %>
 
 <hr>
 <% if @messages.present? %>
   <% @messages.each do |m| %>
-    <strong><%= m.content %></strong>
-    <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.nickname %>さん</a></strong></small>
+    <strong><%= m.content %></strong> <small>by <strong><%= m.user.nickname %><% unless current_user.id == m.user_id %>さん<% end %></strong></small>
+    <% if current_user.id == m.user_id %>
+      <div class="btn_message clearfix">
+　      <%= button_to "編集", edit_message_path(m.id) %>　<%= button_to("削除", message_path(m.id),method: :delete) %>
+      </div>
+    <% end %>
     <hr>
   <% end %>
 <% else %>
