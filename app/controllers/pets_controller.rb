@@ -54,6 +54,7 @@ class PetsController < ApplicationController
   end
   def update
     @pet = Pet.find(params[:id])
+    @pet.area = params[:pet][:prefecture].to_s + " " + params[:pet][:place].to_s
     if @pet.update(pet_params)
       flash[:success] = "ペット情報を編集しました！"
       redirect_to pet_path(@pet.id)
