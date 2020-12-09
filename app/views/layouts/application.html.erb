@@ -6,13 +6,14 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mr-auto">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-green mr-auto">
       <div class="container">
-        <h1><%= link_to "lostbird", pets_path %></h1>
+        <p id = "logo"><%= link_to "lostbird", pets_path %></p>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,9 +24,9 @@
             <p><%= link_to "メッセージ一覧", rooms_path, class: "nav-item nav-link" %></p>
             <p><%= link_to current_user.nickname, user_path(current_user.id), class: "nav-item nav-link" %></p>
             <% else %>
-              <%= link_to "ユーザーを登録する", new_user_registration_path, class: "nav-item nav-link" %>
+              <%= link_to "ユーザー登録", new_user_registration_path, class: "nav-item nav-link" %>
               <br>
-              <%= link_to "ログインする", new_user_session_path, class: "nav-item nav-link" %>
+              <%= link_to "ログイン", new_user_session_path, class: "nav-item nav-link" %>
             <% end %>
           </ul>
         </div>
