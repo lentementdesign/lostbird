@@ -10,7 +10,7 @@ RSpec.describe 'ペット管理機能', type: :system do
         find("#log_in").click
         visit new_pet_path
         fill_in 'pet_name', with: "キーコ"
-        fill_in 'pet_kind', with: "オカメインコ"
+        fill_in 'pet_kind', with: "イエローインコ"
         choose 'pet_gender_オス', with: "オス"
         attach_file "pet_image", "spec/fixtures/okame.jpg"
         select "北海道", from: "pet[prefecture]"
@@ -18,7 +18,7 @@ RSpec.describe 'ペット管理機能', type: :system do
         fill_in 'pet[feature]', with: "可愛い鳴き声で泣きます。"
         click_on "保存"
         visit pets_path
-        expect(page).to have_content "オカメインコ"
+        expect(page).to have_content "イエローインコ"
       end
     end
   end
@@ -26,15 +26,20 @@ RSpec.describe 'ペット管理機能', type: :system do
   describe '一覧表示機能' do
     context '一覧画面に遷移した場合' do
       it '作成済みのペット一覧が表示される' do
+        user = FactoryBot.create(:user)
         pet = FactoryBot.create(:pet, user: user)
         visit pets_path
-        expect(page).to have_content "キーコ"
+        expect(page).to have_content "オカメインコ"
       end
     end
   end
   describe '詳細表示機能' do
-     context '任意のタスク詳細画面に遷移した場合' do
+     context 'ペット詳細画面に遷移した場合' do
        it '該当ペットの内容が表示される' do
+         user = FactoryBot.create(:user)
+         pet = FactoryBot.create(:pet, user: user)
+         visit pet_path(pet.id)
+         expect(page).to have_content "人懐っこい元気な子です。"
        end
      end
   end
