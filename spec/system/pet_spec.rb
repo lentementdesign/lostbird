@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'ペット管理機能', type: :system do
 
-
   describe '検索機能' do
     before do
       user = FactoryBot.create(:user)
