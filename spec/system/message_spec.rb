@@ -1,5 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'メッセージ管理機能', type: :system do
+  
   describe 'メッセージ登録機能' do
     before do
       @user = FactoryBot.create(:user)

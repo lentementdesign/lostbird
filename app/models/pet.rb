@@ -9,7 +9,6 @@ class Pet < ApplicationRecord
   # scope :sorted, -> {order(created_at: "DESC")}
   # scope :sort_lost, -> {kind_like.prefecture_match.not_select.present.keyword.lost.sorted}
 
-
   validates :gender, presence: true
   validates :status, presence: true
   validates :feature, presence: true
