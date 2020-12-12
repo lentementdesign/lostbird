@@ -55,5 +55,6 @@ https://docs.google.com/spreadsheets/d/1m_6SRfUgCCA5SH8dm_nzWa8D0tTBt7T0K1p8hINp
 
 
 ## 仕様予定技術
-devise、メッセージ機能(就職term)
-geocoderを活用したgoogle mapの埋め込み(カリキュラム外)
+* devise(就職term)
+* メッセージ機能(就職term)
+* geocoderを活用したgoogle mapの埋め込み(カリキュラム外)
