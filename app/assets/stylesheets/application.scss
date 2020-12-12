@@ -2,7 +2,39 @@
 @import "bootstrap";
 body {
   font-family: 'Noto Sans JP', sans-serif;
+  a { color: #49b2c2 }
+  #logo {
+    font-family: 'Paytone One', sans-serif;
+  }
+  .navbar {
+    .navbar-nav {
+      a.nav-link {
+        color: #fff;
+      }
+    }
+  }
+  .label {
+    margin-top: 1rem;
+  }
+  .pagination {
+    margin-top: 3rem;
+    li.page, li.next, li.last {
+      display: inline-block;
+       width: 50px;
+       height: 40px;
+       line-height: 40px;
+       text-align:center;
+        &.active {
+          background: #49b2c2;
+          border-radius: 10%;
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
 }
+
 a:hover, a img:hover {
   opacity: 0.7;
   text-decoration: none;
@@ -17,7 +49,7 @@ a:hover, a img:hover {
   p + p {margin: 1rem;}
 }
 #searchbox {
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 img {
   border-radius: 24px;
@@ -30,12 +62,19 @@ img {
   margin: 10px 0 10px 0;
   a {
     color: #fff;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
   }
 }
 .bg-green {
-  background-color: #65b6c2;
+  background-color: #49b2c2;
+}
+.status {
+  background: #49b2c2;
+  padding: 4px;
+  border-radius: 14%;
+  color: #fff;
+  display: inline-block;
 }
 
 .device-page {
@@ -56,8 +95,6 @@ img {
     }
   }
 }
-
-
 
 #map {
   height: 300px;
@@ -87,8 +124,12 @@ img {
   }
 }
 
-
-
+#pet-page {
+  h2 {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+  }
+}
 
 #room-page {
   .btn_message {
