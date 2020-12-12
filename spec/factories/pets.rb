@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :pet do
     name { "キーコ" }
     kind { "オカメインコ" }
-    gender { "オス" }
+    lost_gender { "オス" }
     feature { "人懐っこい元気な子です。" }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/okame.jpg')) }
     status { 1 }
@@ -19,7 +19,7 @@ FactoryBot.define do
   factory :second_pet, class: Pet do
     name { "キーコ" }
     kind { "オカメインコ" }
-    gender { "オス" }
+    lost_gender { "オス" }
     feature { "人懐っこい元気な子です。" }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/okame.jpg')) }
     status { 1 }

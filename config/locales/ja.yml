@@ -5,7 +5,8 @@ ja:
       pet:
         name: ペットの名前
         feature: ペットの詳細
-        gender: 性別
+        lost_gender: 性別
+        find_gender: 性別
         image: ペットの写真
         prefecture: 都道府県
         place: 保護した場所

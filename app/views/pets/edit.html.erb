@@ -16,7 +16,7 @@
 <%= form_with(model: @pet, local: true, class: 'form-inline') do |f| %>
 
   <div id="tr0">
-    <h2>迷子 or 保護</h2>
+    <h2>迷子 or 保護<span class="red">*</span></h2>
     <p>
       <%= f.radio_button :status, Pet.statuses.keys[1], class: "lost_or_rescued" %>
       <%= f.label "迷子" %>
@@ -28,30 +28,30 @@
   <div id="tr1">
     <h2>ペットの名前</h2>
     <p><%= f.text_field :name, placeholder: "小太郎", class: "form-control" %></p>
-    <h2>ペットの種類</h2>
+    <h2>ペットの種類<span class="red">*</span></h2>
     <p><%= f.text_field :kind, placeholder: "オカメインコ", class: "form-control" %></p>
 
-    <h2>性別</h2>
+    <h2>性別<span class="red">*</span></h2>
     <p>
-      <%= f.radio_button :gender, :オス, checked: true, class: 'form-control' %>
+      <%= f.radio_button :lost_gender, :オス, checked: true, class: 'form-control' %>
       <%= f.label "オス" %>
-      <%= f.radio_button :gender, :メス, class: 'form-control' %>
+      <%= f.radio_button :lost_gender,, :メス, class: 'form-control' %>
       <%= f.label "メス" %>
-      <%= f.radio_button :gender, :不明, class: 'form-control' %>
+      <%= f.radio_button :lost_gender,, :不明, class: 'form-control' %>
       <%= f.label "不明" %>
     </p>
 
-    <h2>迷子になった日</h2>
+    <h2>迷子になった日<span class="red">*</span></h2>
     <p><%= f.date_select :lost_day, {}, class: 'form-control' %></p>
-    <h2>ペットの写真</h2>
+    <h2>ペットの写真<span class="red">*</span></h2>
     <p><%= f.file_field :image, class: 'form-control-file' %></p>
     <%= f.hidden_field :image_cache %>
-    <h2>迷子になった場所</h2>
+    <h2>迷子になった場所<span class="red">*</span></h2>
     <p>
       <%= f.select :prefecture, Pet.prefectures.keys, {}, class: 'form-control col-md-4' %>
       <%= f.text_field :place, placeholder: "淵野辺公園", class: "form-control col-md-4" %>
     </p>
-    <h2>ペットの詳細</h2>
+    <h2>ペットの詳細<span class="red">*</span></h2>
     <%= f.text_area :feature, placeholder: "説明文入ります。", class: "form-control" %>
     <div class="btn_group clearfix">
       <p class="btn_save"><%= f.submit "保存", class: "btn btn-primary" %></p>
@@ -60,25 +60,25 @@
   </div>
 
   <div id="tr2">
-    <h2>ペットの種類</h2>
+    <h2>ペットの種類<span class="red">*</span></h2>
     <p><%= f.text_field :kind, placeholder: "オカメインコ", class: "form-control" %></p>
-    <h2>性別</h2>
-    <%= f.radio_button :gender, :オス, class: 'form-control' %>
+    <h2>性別<span class="red">*</span></h2>
+    <%= f.radio_button :find_gender, :オス, class: 'form-control' %>
     <%= f.label "オス" %>
-    <%= f.radio_button :gender, :メス, checked: true, class: 'form-control' %>
+    <%= f.radio_button :find_gender, :メス, checked: true, class: 'form-control' %>
     <%= f.label "メス" %>
-    <%= f.radio_button :gender, :不明, class: 'form-control' %>
+    <%= f.radio_button :find_gender, :不明, class: 'form-control' %>
     <%= f.label "不明" %>
 
-    <h2>保護した日</h2>
+    <h2>保護した日<span class="red">*</span></h2>
     <%= f.date_select :find_day, {}, class: 'form-control' %>
-    <h2>ペットの写真</h2>
+    <h2>ペットの写真<span class="red">*</span></h2>
     <%= f.file_field :image, class: 'form-control-file' %>
     <%= f.hidden_field :image_cache %>
-    <h2>保護した場所</h2>
+    <h2>保護した場所<span class="red">*</span></h2>
     <%= f.select :prefecture, Pet.prefectures.keys, {}, class: 'form-control col-md-4' %>
     <%= f.text_field :place, placeholder: "淵野辺公園", class: "form-control col-md-4" %>
-    <h2>ペットの詳細</h2>
+    <h2>ペットの詳細<span class="red">*</span></h2>
     <%= f.text_area :feature, placeholder: "説明文入ります。", class: "form-control" %>
     <div class="btn_group clearfix">
       <p class="btn_save"><%= f.submit "保存", class: "btn btn-primary" %></p>

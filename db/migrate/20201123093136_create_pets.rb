@@ -3,7 +3,8 @@ class CreatePets < ActiveRecord::Migration[5.2]
     create_table :pets do |t|
       t.string :name
       t.text :kind
-      t.string :gender, null: false
+      t.string :lost_gender
+      t.string :find_gender
       t.text :feature, null: false
       t.text :image, null: false
       t.integer :status, null: false, default: 1

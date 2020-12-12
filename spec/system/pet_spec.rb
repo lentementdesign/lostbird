@@ -85,7 +85,7 @@ RSpec.describe 'ペット管理機能', type: :system do
         visit new_pet_path
         fill_in 'pet_name', with: "キーコ"
         fill_in 'pet_kind', with: "イエローインコ"
-        choose 'pet_gender_オス', with: "オス"
+        choose 'pet_lost_gender_オス', with: "オス"
         attach_file "pet_image", "spec/fixtures/okame.jpg"
         select "北海道", from: "pet[prefecture]"
         fill_in '淵野辺公園', with: "pet[place]"

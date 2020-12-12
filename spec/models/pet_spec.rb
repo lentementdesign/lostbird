@@ -7,7 +7,7 @@ RSpec.describe 'ペットモデル機能', type: :model do
         @user = FactoryBot.create(:user)
         pet = Pet.new(name: "キーコ",
                       kind: "オカメインコ",
-                      gender: "",
+                      lost_gender: "",
                       feature: "人懐っこい元気な子です。公園でフライトスーツをつけて一緒に遊んでいたのですが、スーツのハーネスが取れて飛んでいってしまいました。大切な家族なので、途方にくれています。",
                       image: open("./db/fixtures/okame.jpg"),
                       status: 1,
@@ -27,7 +27,7 @@ RSpec.describe 'ペットモデル機能', type: :model do
         @user = FactoryBot.create(:user)
         pet = Pet.new(name: "キーコ",
                       kind: "オカメインコ",
-                      gender: "オス",
+                      lost_gender: "オス",
                       feature: "",
                       image: open("./db/fixtures/okame.jpg"),
                       status: 1,
@@ -47,7 +47,7 @@ RSpec.describe 'ペットモデル機能', type: :model do
         @user = FactoryBot.create(:user)
         pet = Pet.new(name: "キーコ",
                       kind: "オカメインコ",
-                      gender: "オス",
+                      lost_gender: "オス",
                       feature: "",
                       image: "",
                       status: 1,
@@ -67,7 +67,7 @@ RSpec.describe 'ペットモデル機能', type: :model do
         @user = FactoryBot.create(:user)
         pet = Pet.new(name: "キーコ",
                       kind: "オカメインコ",
-                      gender: "オス",
+                      lost_gender: "オス",
                       feature: "",
                       image: open("./db/fixtures/okame.jpg"),
                       status: 1,
@@ -87,10 +87,10 @@ RSpec.describe 'ペットモデル機能', type: :model do
         @user = FactoryBot.create(:user)
         pet = Pet.new(name: "キーコ",
                       kind: "オカメインコ",
-                      gender: "オス",
+                      lost_gender: "オス",
                       feature: "人懐っこい元気な子です。公園でフライトスーツをつけて一緒に遊んでいたのですが、スーツのハーネスが取れて飛んでいってしまいました。大切な家族なので、途方にくれています。",
                       image: open("./db/fixtures/okame.jpg"),
-                      status: 1,
+                      lost_status: 1,
                       lost_day: Time.zone.now,
                       prefecture: 1,
                       place: "モエレ沼公園",
@@ -107,7 +107,7 @@ RSpec.describe 'ペットモデル機能', type: :model do
         @user = FactoryBot.create(:user)
         pet = Pet.new(name: "キーコ",
                       kind: "オカメインコ",
-                      gender: "オス",
+                      lost_gender: "オス",
                       feature: "人懐っこい元気な子です。公園でフライトスーツをつけて一緒に遊んでいたのですが、スーツのハーネスが取れて飛んでいってしまいました。大切な家族なので、途方にくれています。",
                       image: open("./db/fixtures/okame.jpg"),
                       status: 1,

@@ -3,7 +3,8 @@
 one:
   name: MyString
   kind: MyText
-  gender: MyString
+  lost_gender: MyString
+  find_gender: MyString
   feature: MyText
   photo: MyText
   lost: false
@@ -17,7 +18,8 @@ one:
 two:
   name: MyString
   kind: MyText
-  gender: MyString
+  lost_gender: MyString
+  find_gender: MyString  
   feature: MyText
   photo: MyText
   lost: false
