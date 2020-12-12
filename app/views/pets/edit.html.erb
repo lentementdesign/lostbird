@@ -45,6 +45,7 @@
     <p><%= f.date_select :lost_day, {}, class: 'form-control' %></p>
     <h2>ペットの写真</h2>
     <p><%= f.file_field :image, class: 'form-control-file' %></p>
+    <%= f.hidden_field :image_cache %>
     <h2>迷子になった場所</h2>
     <p>
       <%= f.select :prefecture, Pet.prefectures.keys, {}, class: 'form-control col-md-4' %>
@@ -73,6 +74,7 @@
     <%= f.date_select :find_day, {}, class: 'form-control' %>
     <h2>ペットの写真</h2>
     <%= f.file_field :image, class: 'form-control-file' %>
+    <%= f.hidden_field :image_cache %>
     <h2>保護した場所</h2>
     <%= f.select :prefecture, Pet.prefectures.keys, {}, class: 'form-control col-md-4' %>
     <%= f.text_field :place, placeholder: "淵野辺公園", class: "form-control col-md-4" %>

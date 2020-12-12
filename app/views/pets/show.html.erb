@@ -21,7 +21,7 @@
   <% if @pet.status == "迷子" %>
     <p class="name">名前：<%= @pet.name %></p>
     <p class="kind">種類：<%= @pet.kind %></p>
-    <p class="kind">迷子になった日：<%= @pet.lost_day %></p>
+    <p class="kind">迷子になった日：<%= @pet.lost_day.strftime("%Y年%m月%d日") %></p>
     <p class="kind">性別：<%= @pet.gender %></p>
     <p class="feature"><%= @pet.feature %></p>
   <% elsif @pet.status == "保護" %>
@@ -83,7 +83,7 @@
         <%= fields_for @entry do |e| %>
           <%= e.hidden_field :user_id, value: @user.id %>
         <% end %>
-        <%= f.submit "メッセージを送る" %>
+        <%= f.submit "メッセージを送る", class: "btn btn-info" %>
       <% end %>
     <% end %>
   <% end %>

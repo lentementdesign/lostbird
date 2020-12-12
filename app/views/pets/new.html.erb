@@ -33,7 +33,7 @@
 
     <h2>性別</h2>
     <p>
-      <%= f.radio_button :gender, :オス, checked: true, class: 'form-control' %>
+      <%= f.radio_button :gender, :オス, checked: params[:gender], class: 'form-control' %>
       <%= f.label "オス" %>
       <%= f.radio_button :gender, :メス, class: 'form-control' %>
       <%= f.label "メス" %>
@@ -44,7 +44,9 @@
     <h2>迷子になった日</h2>
     <p><%= f.date_select :lost_day, {}, class: 'form-control' %></p>
     <h2>ペットの写真</h2>
+    <%= image_tag(@pet.image.url) if @pet.image && @pet.image.url %>
     <p><%= f.file_field :image, class: 'form-control-file' %></p>
+    <%= f.hidden_field :image_cache %>
     <h2>迷子になった場所</h2>
     <p>
       <%= f.select :prefecture, Pet.prefectures.keys, {}, class: 'form-control col-md-4' %>
@@ -64,7 +66,7 @@
     <h2>性別</h2>
     <%= f.radio_button :gender, :オス, class: 'form-control' %>
     <%= f.label "オス" %>
-    <%= f.radio_button :gender, :メス, checked: true, class: 'form-control' %>
+    <%= f.radio_button :gender, :メス, class: 'form-control' %>
     <%= f.label "メス" %>
     <%= f.radio_button :gender, :不明, class: 'form-control' %>
     <%= f.label "不明" %>
@@ -72,7 +74,9 @@
     <h2>保護した日</h2>
     <%= f.date_select :find_day, {}, class: 'form-control' %>
     <h2>ペットの写真</h2>
+    <%= image_tag(@pet.image.url) if @pet.image && @pet.image.url %>
     <%= f.file_field :image, class: 'form-control-file' %>
+    <%= f.hidden_field :image_cache %>
     <h2>保護した場所</h2>
     <%= f.select :prefecture, Pet.prefectures.keys, {}, class: 'form-control col-md-4' %>
     <%= f.text_field :place, placeholder: "淵野辺公園", class: "form-control col-md-4" %>

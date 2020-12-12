@@ -18,7 +18,7 @@ body {
   }
   .pagination {
     margin-top: 3rem;
-    li.page, li.next, li.last {
+    li {
       display: inline-block;
        width: 50px;
        height: 40px;
@@ -71,8 +71,8 @@ img {
 }
 .status {
   background: #49b2c2;
-  padding: 4px;
-  border-radius: 14%;
+  padding: 4px 6px;
+  border-radius: 6px;
   color: #fff;
   display: inline-block;
 }
@@ -132,6 +132,12 @@ img {
 }
 
 #room-page {
+  .message-box {
+    margin: 2rem 0 0 0;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.1);
+    padding: 1.6rem;
+  }
   .btn_message {
     .button_to {
       width: 50px;

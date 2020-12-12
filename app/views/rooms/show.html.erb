@@ -12,7 +12,7 @@
     <strong><%= m.content %></strong> <small>by <strong><%= m.user.nickname %><% unless current_user.id == m.user_id %>さん<% end %></strong></small>
     <% if current_user.id == m.user_id %>
       <div class="btn_message clearfix">
-　      <%= button_to "編集", edit_message_path(m.id) %>　<%= button_to("削除", message_path(m.id),method: :delete) %>
+　      <%= button_to "編集", edit_message_path(m.id), method: :get %>　<%= button_to("削除", message_path(m.id),method: :delete) %>
       </div>
     <% end %>
     <hr>
@@ -25,7 +25,7 @@
   <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70 %>
   <%= f.hidden_field :room_id, :value => @room.id %>
   <br>
-  <%= f.submit "投稿する" %>
+  <%= f.submit "投稿する", class: "btn btn-info" %>
 <% end %>
 
 </div>
