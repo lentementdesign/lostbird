@@ -28,7 +28,7 @@
   <div id="tr1">
     <h2>ペットの名前</h2>
     <p><%= f.text_field :name, placeholder: "小太郎", class: "form-control" %></p>
-    <h2>ペットの種類<span class="red">*</span></h2>
+    <h2>ペットの種類</h2>
     <p><%= f.text_field :kind, placeholder: "オカメインコ", class: "form-control" %></p>
 
     <h2>性別<span class="red">*</span></h2>
@@ -60,7 +60,7 @@
   </div>
 
   <div id="tr2">
-    <h2>ペットの種類<span class="red">*</span></h2>
+    <h2>ペットの種類</h2>
     <p><%= f.text_field :kind, placeholder: "オカメインコ", class: "form-control" %></p>
     <h2>性別<span class="red">*</span></h2>
     <%= f.radio_button :find_gender, :オス, class: 'form-control' %>
