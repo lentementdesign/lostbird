@@ -3,12 +3,14 @@
     <p>メッセージがありません。</p>
   <% end %>
   <% @anotherEntries.each do |e| %>
-  <div class="message-box">
-    <%= link_to room_path(e.room.id) do %>
-      <p><%= e.user.nickname %>さん</p>
-      <p><%= e.room.messages.last.content %></p>
-      <p><%= e.room.messages.last.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+    <% if e.room.messages.present? %>
+    <div class="message-box">
+      <%= link_to room_path(e.room.id) do %>
+        <p><%= e.user.nickname %>さん</p>
+        <p><%= e.room.messages.last.content %></p>
+        <p><%= e.room.messages.last.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+      <% end %>
+    </div>
     <% end %>
-  </div>
   <% end %>
 </div>
