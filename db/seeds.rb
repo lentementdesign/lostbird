@@ -171,7 +171,7 @@ Pet.create!(kind: "インコ",
             user_id:1
             )
 Pet.create!(kind: "七色インコ",
-            gender: "メス",
+            find_gender: "メス",
             feature: "公園で遊んでいたところ、急に肩にとまったので、びっくりしました。鳴き声も可愛く、人懐っこい元気な子です。",
             image: open("./db/fixtures/color.jpg"),
             status: 2,
