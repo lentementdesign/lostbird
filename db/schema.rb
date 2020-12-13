@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_134309) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.text "kind"
+    t.text "kind", null: false
     t.string "lost_gender"
     t.string "find_gender"
     t.text "feature", null: false

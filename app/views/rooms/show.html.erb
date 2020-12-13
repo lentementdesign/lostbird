@@ -22,7 +22,7 @@
 <% end %>
 
 <%= form_for @message do |f| %>
-  <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70 %>
+  <%= f.text_field :content, placeholder: "メッセージを入力して下さい。空白の場合メッセージは送信されません。" , size: 70 %>
   <%= f.hidden_field :room_id, :value => @room.id %>
   <br>
   <%= f.submit "投稿する", class: "btn btn-info" %>

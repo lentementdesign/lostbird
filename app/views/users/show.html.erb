@@ -9,17 +9,18 @@
 <p><%= @user.email %></p>
 
 <h2>パスワード</h2>
-<p><%= @user.password %></p>
+<p>●●●●</p>
 
 <h2>登録しているペット</h2>
   <% @pets.each do |pet| %>
   <p><%= link_to pet.kind, pet_path(pet.id) %></p>
   <% end %>
 
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<br>
+<p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
 
 <% if @user.id == current_user.id %>
-<%= link_to "編集", edit_user_registration_path %>
+<p><%= link_to "ユーザー情報の編集", edit_user_registration_path %></p>
 
 <% else %>
   <% if @isRoom == true %>

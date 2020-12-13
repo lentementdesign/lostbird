@@ -52,6 +52,7 @@ class PetsController < ApplicationController
   def edit
     @pet = Pet.find(params[:id])
   end
+
   def update
     @pet = Pet.find(params[:id])
     @pet.area = params[:pet][:prefecture].to_s + " " + params[:pet][:place].to_s
@@ -84,9 +85,19 @@ class PetsController < ApplicationController
         end
       end
     end
-
-
   end
+
+  def destroy
+    @pet = Pet.find(params[:id])
+    if @pet.destroy
+      flash[:success] = "ペット情報を削除しました！"
+      redirect_to pets_path
+    else
+      flash[:success] = "削除に失敗しました。"
+      redirect_to pets_path
+    end
+  end
+
 
   private
   def pet_params

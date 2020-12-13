@@ -14,7 +14,8 @@
 
   <% if user_signed_in? %>
     <% if @user.id == current_user.id %>
-      <%= link_to "編集", edit_pet_path(@pet.id) %>
+      <%= link_to "編集", edit_pet_path(@pet.id) %>　
+      <%= link_to "削除", pet_path(@pet.id), data: { confirm: "本当に削除してもよろしいですか？" }, method: :delete %>
     <% end %>
   <% end %>
 

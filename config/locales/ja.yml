@@ -9,7 +9,9 @@ ja:
         find_gender: 性別
         image: ペットの写真
         prefecture: 都道府県
-        place: 保護した場所
+        place: (迷子になった or 保護した)場所
+        lost_day: 迷子になった日
+        find_day: 保護した日
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

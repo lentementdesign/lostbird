@@ -2,11 +2,24 @@ class Pet < ApplicationRecord
   scope :kind_like, -> kind {where('kind like ?', "%#{kind}%")}
   scope :prefecture_match, -> (params) {where(prefecture: (params))}
   validates :status, presence: true
+  validates :kind, presence: true
   validates :feature, presence: true
   validates :image, presence: true
   validates :prefecture, presence: true
   validates :place, presence: true
   validates :area, presence: true
+  validate :lost_day_cannot_be_in_the_future
+  validate :find_day_cannot_be_in_the_future
+  def lost_day_cannot_be_in_the_future
+    if lost_day.present? && Date.today < lost_day
+      errors.add(:lost_day, "は未来の日時は選択できません")
+    end
+  end
+  def find_day_cannot_be_in_the_future
+    if find_day.present? && Date.today < find_day
+      errors.add(:find_day, "は未来の日時は選択できません")
+    end
+  end
   belongs_to :user
   mount_uploader :image, ImageUploader
   enum prefecture:{

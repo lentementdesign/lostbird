@@ -2,7 +2,7 @@ class CreatePets < ActiveRecord::Migration[5.2]
   def change
     create_table :pets do |t|
       t.string :name
-      t.text :kind
+      t.text :kind, null: false
       t.string :lost_gender
       t.string :find_gender
       t.text :feature, null: false
