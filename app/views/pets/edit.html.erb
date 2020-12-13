@@ -44,6 +44,7 @@
     <h2>迷子になった日<span class="red">*</span></h2>
     <p><%= f.date_select :lost_day, {}, class: 'form-control' %></p>
     <h2>ペットの写真<span class="red">*</span></h2>
+    <%= image_tag(@pet.image.url) if @pet.image && @pet.image.url %>
     <p><%= f.file_field :image, class: 'form-control-file' %></p>
     <%= f.hidden_field :image_cache %>
     <h2>迷子になった場所<span class="red">*</span></h2>
@@ -73,6 +74,7 @@
     <h2>保護した日<span class="red">*</span></h2>
     <%= f.date_select :find_day, {}, class: 'form-control' %>
     <h2>ペットの写真<span class="red">*</span></h2>
+    <%= image_tag(@pet.image.url) if @pet.image && @pet.image.url %>
     <%= f.file_field :image, class: 'form-control-file' %>
     <%= f.hidden_field :image_cache %>
     <h2>保護した場所<span class="red">*</span></h2>
