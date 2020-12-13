@@ -90,7 +90,7 @@ RSpec.describe 'ペットモデル機能', type: :model do
                       lost_gender: "オス",
                       feature: "人懐っこい元気な子です。公園でフライトスーツをつけて一緒に遊んでいたのですが、スーツのハーネスが取れて飛んでいってしまいました。大切な家族なので、途方にくれています。",
                       image: open("./db/fixtures/okame.jpg"),
-                      lost_status: 1,
+                      status: 1,
                       lost_day: Time.zone.now,
                       prefecture: 1,
                       place: "モエレ沼公園",
