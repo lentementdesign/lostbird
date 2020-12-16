@@ -14,10 +14,10 @@
   <% end %>
 
 <br>
-<p><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %></p>
+<p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
 
 <% if @user.id == current_user.id %>
-<p><%= button_to "ユーザー情報の編集", edit_user_registration_path, class: "btn" %></p>
+<p><%= link_to "ユーザー情報の編集", edit_user_registration_path %></p>
 
 <% else %>
   <% if @isRoom == true %>
