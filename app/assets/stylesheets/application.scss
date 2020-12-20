@@ -1,17 +1,27 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+
+
+
 body {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Sans JP', -apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans","ヒラギノ角ゴ ProN W3","Arial","メイリオ","Meiryo",sans-serif;
   color: #455A64;
-  p, li, h1, h2 {
+  p, li, h1, h2, a {
     color: #455A64;
   }
-  a { color: #49b2c2 }
   .red {
     color: red;
   }
+  .material-icons-round {
+    font-size: 18px;
+    display: inline-flex;
+    vertical-align: middle;
+    color: #819ca0;
+  }
+
   #logo {
-    font-family: 'Paytone One', sans-serif;
+    font-family: 'Paytone One', -apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans","ヒラギノ角ゴ ProN W3","Arial","メイリオ","Meiryo",sans-serif;
   }
   .navbar {
     .navbar-nav {
@@ -77,11 +87,26 @@ img {
   background-color: #49b2c2;
 }
 .status {
-  background: #49b2c2;
   padding: 4px 6px;
   border-radius: 6px;
   color: #fff;
   display: inline-block;
+}
+.status_lost {
+  background: #9874cc;
+}
+.status_find {
+  background: #C4C36D;
+}
+.pet-unit {
+  margin-bottom: 1.4rem;
+  p { margin-bottom: 0.4rem; }
+  p.img-fluid {
+    margin-bottom: 0.8rem;
+  }
+  .pet_created_at {
+    font-size: 0.9rem;
+  }
 }
 
 .device-page {

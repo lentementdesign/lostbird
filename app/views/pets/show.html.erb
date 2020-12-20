@@ -1,16 +1,16 @@
 
 <div class="col-sm-12 label">
   <% if @pet.status == "迷子" %>
-    <h2 class="status">迷子</h2>
+    <h2 class="status status_lost">迷子</h2>
   <% elsif @pet.status == "保護" %>
-    <h2 class="status">保護</h2>
+    <h2 class="status status_find">保護</h2>
   <% end %>
 </div>
 
-<div class="col-sm-12 col-md-4">
+<div class="col-sm-12 col-md-5">
   <%= image_tag(@pet.image.url, class: "img-fluid") %>
 </div>
-<div class="col-sm-12 col-md-8">
+<div class="col-sm-12 col-md-7">
 
   <% if user_signed_in? %>
     <% if @user.id == current_user.id %>
@@ -34,12 +34,12 @@
 </div>
 
 <div class="col-sm-12">
+  <p><div id="map"></div></p>
   <% if @pet.status == "迷子" %>
     <p>迷子になった場所：<%= @pet.area %></p>
   <% elsif @pet.status == "保護" %>
-    <p>保護した場所：<%= @pet.area %></p>
+    <p><i class="material-icons-round">place</i>保護した場所：<%= @pet.area %></p>
   <% end %>
-  <div id="map"></div>
 
   <script type="text/javascript">
       function initMap() {

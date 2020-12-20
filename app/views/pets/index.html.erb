@@ -1,26 +1,42 @@
 
-<div class="col-sm-12">
-  <div class="float-right"><p id="addpet"><%= link_to "ペットを登録", new_pet_path %></p></div>
+  <div class="col-sm-12">
+    <div class="float-right">
 
-  <div id="searchbox">
-    <%= form_with(url: pets_path, local: true, method: :get, class: 'form-inline') do |f| %>
-      <%= f.select :status, Pet.statuses.keys.to_a, {selected: params[:status]}, class: 'form-control' %>
-      <%= f.select :prefecture, Pet.prefectures.keys.to_a, {selected: params[:prefecture]}, class: 'form-control' %>
-      <%= f.text_field :keyword, id: "kind_name", placeholder: "種類、例：オカメインコ", value: params[:keyword], class: 'form-control' %>
-      <%= f.submit '検索', class: "decision btn btn-info" %>
-    <% end %>
+      <p id="addpet">
+        <%= link_to new_pet_path do %>
+          <i class="material-icons-round">add</i>ペットを登録
+        <% end %>
+      </p>
+    </div>
+
+    <div id="searchbox">
+      <%= form_with(url: pets_path, local: true, method: :get, class: 'form-inline') do |f| %>
+        <%= f.select :status, Pet.statuses.keys.to_a, {selected: params[:status]}, class: 'form-control' %>
+        <%= f.select :prefecture, Pet.prefectures.keys.to_a, {selected: params[:prefecture]}, class: 'form-control' %>
+        <%= f.text_field :keyword, id: "kind_name", placeholder: "種類、例：オカメインコ", value: params[:keyword], class: 'form-control' %>
+        <%= f.submit '検索', class: "decision btn btn-info" %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<% @pets.each do |pet| %>
-<div class="col-sm-12 col-md-4 pet-unit">
-  <p class="img-fluid"><%= link_to image_tag(pet.image.url, class: "img-fluid"), pet_path(pet.id) %></p>
-  <p class="pet_kind"><%= link_to pet.status, pet_path(pet.id), class: "status" %> <%= link_to pet.kind, pet_path(pet.id) %></p>
-  <p class="pet_area"><%= link_to pet.area, pet_path(pet.id) %></p>
-  <p class="pet_created_at"><%= link_to pet.created_at.strftime("%Y年%m月%d日 %H:%M"), pet_path(pet.id) %></p>
-</div>
-<% end %>
+  <% @pets.each do |pet| %>
+  <div class="col-sm-12 col-md-4 pet-unit">
+    <p class="img-fluid"><%= link_to image_tag(pet.image.url, class: "img-fluid"), pet_path(pet.id) %></p>
+    <div>
+    <p class="pet_kind">
+      <% if pet.status == "迷子" %>
+        <%= link_to pet.status, pet_path(pet.id), class: "status status_lost" %>
+      <% elsif pet.status == "保護" %>
+        <%= link_to pet.status, pet_path(pet.id), class: "status status_find" %>
+      <% end %>
+       <%= link_to pet.kind, pet_path(pet.id) %></p>
+    <p class="pet_area"><i class="material-icons-round">place</i>
+      <%= link_to pet.area, pet_path(pet.id) %></p>
+    <p class="pet_created_at"><i class="material-icons-round">access_time</i> <%= link_to pet.created_at.strftime("%Y年%m月%d日 %H:%M"), pet_path(pet.id) %></p>
+    </div>
+  </div>
+  <% end %>
 
-<div class="col-sm-12">
-  <%= paginate @pets, class: "btn" %>
-</div>
+  <div class="col-sm-12">
+    <%= paginate @pets, class: "btn" %>
+  </div>
