@@ -28,12 +28,29 @@
     <p class="kind">種類：<%= @pet.kind %></p>
     <p class="kind">迷子になった日：<%= @pet.lost_day.strftime("%Y年%m月%d日") %></p>
     <p class="kind">性別：<%= @pet.lost_gender %></p>
-    <p class="feature"><%= @pet.feature %></p>
+    <p class="feature"><%= @pet.feature %> <small>by <%= @pet.user.nickname %>さん</small></p>
   <% elsif @pet.status == "保護" %>
     <p class="kind">種類：<%= @pet.kind %></p>
     <p class="kind">保護した日：<%= @pet.find_day.strftime("%Y年%m月%d日") %></p>
     <p class="kind">性別：<%= @pet.find_gender %></p>
-    <p class="feature"><%= @pet.feature %></p>
+    <p class="feature"><%= @pet.feature %> <small>by <%= @pet.user.nickname %>さん</small></p>
+  <% end %>
+  <% if user_signed_in? %>
+    <% unless @user.id == current_user.id %>
+      <% if @isRoom == true %>
+        <p><a href="/rooms/<%= @roomId %>" class="btn btn-info">メッセージを送る</a>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit "メッセージを送る", class: "btn btn-info" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% unless user_signed_in? %>
+    <a href="/rooms/<%= @roomId %>" class="btn btn-info">メッセージを送る</a>
   <% end %>
 </div>
 
@@ -77,20 +94,3 @@
   </script>
 
 </div>
-
-<% if user_signed_in? %>
-  <div class="col-sm-12">
-  <% unless @user.id == current_user.id %>
-    <% if @isRoom == true %>
-      <p><a href="/rooms/<%= @roomId %>" class="btn btn-info">メッセージを送る</a>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, value: @user.id %>
-        <% end %>
-        <%= f.submit "メッセージを送る", class: "btn btn-info" %>
-      <% end %>
-    <% end %>
-  <% end %>
-  </div>
-<% end %>
