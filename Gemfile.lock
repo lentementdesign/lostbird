@@ -107,6 +107,9 @@ GEM
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gretel (4.2.0)
+      actionview (>= 5.1, < 7.0)
+      railties (>= 5.1, < 7.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.11.0)
@@ -280,6 +283,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   geocoder
+  gretel
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 0.17.0)

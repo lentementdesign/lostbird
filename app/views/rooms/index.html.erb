@@ -1,6 +1,8 @@
 <div class="col-sm-12" id="room-page">
-
-
+  <div id="breadcrumb">
+    <% breadcrumb :rooms %>
+    <%= render "shared/breadcrumbs" %>
+  </div>
   <% if @anotherEntries.count == 0 %>
     <p>メッセージがありません。</p>
   <% end %>

@@ -1,5 +1,10 @@
 
+
 <div class="col-xs-12" id="room-page">
+<div id="breadcrumb">
+  <% breadcrumb :room_show %>
+  <%= render "shared/breadcrumbs" %>
+</div>
 <h1>メッセージ</h1>
 <h4>参加者</h4>
 <% @entries.each do |e| %>

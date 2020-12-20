@@ -1,5 +1,9 @@
 
 <div class="col-sm-12 label">
+  <div id="breadcrumb">
+    <% breadcrumb :pet_show %>
+    <%= render "shared/breadcrumbs" %>
+  </div>
   <% if @pet.status == "迷子" %>
     <h2 class="status status_lost">迷子</h2>
   <% elsif @pet.status == "保護" %>
@@ -14,8 +18,8 @@
 
   <% if user_signed_in? %>
     <% if @user.id == current_user.id %>
-      <%= link_to "編集", edit_pet_path(@pet.id) %>　
-      <%= link_to "削除", pet_path(@pet.id), data: { confirm: "本当に削除してもよろしいですか？" }, method: :delete %>
+      <%= link_to "編集", edit_pet_path(@pet.id),class: "btn btn-info" %>　
+      <%= link_to "削除", pet_path(@pet.id),class: "btn btn-light", data: { confirm: "本当に削除してもよろしいですか？" }, method: :delete %>
     <% end %>
   <% end %>
 
@@ -36,7 +40,7 @@
 <div class="col-sm-12">
   <p><div id="map"></div></p>
   <% if @pet.status == "迷子" %>
-    <p>迷子になった場所：<%= @pet.area %></p>
+    <p><i class="material-icons-round">place</i>迷子になった場所：<%= @pet.area %></p>
   <% elsif @pet.status == "保護" %>
     <p><i class="material-icons-round">place</i>保護した場所：<%= @pet.area %></p>
   <% end %>

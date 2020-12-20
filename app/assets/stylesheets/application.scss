@@ -19,7 +19,10 @@ body {
     vertical-align: middle;
     color: #819ca0;
   }
-
+  #breadcrumb {
+    font-size: 0.8rem;
+    margin: 1rem 0;
+  }
   #logo {
     font-family: 'Paytone One', -apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans","ヒラギノ角ゴ ProN W3","Arial","メイリオ","Meiryo",sans-serif;
   }
@@ -30,9 +33,7 @@ body {
       }
     }
   }
-  .label {
-    margin-top: 1rem;
-  }
+
   .pagination {
     margin-top: 3rem;
     li {

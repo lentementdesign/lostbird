@@ -16,6 +16,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'dotenv-rails'
 gem 'kaminari', '~> 0.17.0'
 gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'gretel'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

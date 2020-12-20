@@ -1,5 +1,9 @@
 
 <div class="col-sm-12">
+  <div id="breadcrumb">
+    <% breadcrumb :user_show %>
+    <%= render "shared/breadcrumbs" %>
+  </div>
 <h1><%= @user.nickname %></h1>
 
 <h2>メールアドレス</h2>

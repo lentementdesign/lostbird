@@ -1,6 +1,9 @@
 
 <div class="col-sm-12" id="form-page">
-
+  <div id="breadcrumb">
+    <% breadcrumb :new_pet %>
+    <%= render "shared/breadcrumbs" %>
+  </div>
 <% if @pet.errors.any? %>
   <div id="error_explanation">
     <h2><%= @pet.errors.count %>件のエラーがあります。</h2>
